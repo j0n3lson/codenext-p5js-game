@@ -1,0 +1,18 @@
+{
+  "include": [
+    "*.js",
+    "libraries/*.js",
+    // TODO: Including this makes the IntelliSense features work. But the
+    // is that it's relative to my local workspace meaning this repo is
+    // would not be useful for teaching. That is students can't clone this
+    // repo without modifying this line for their situation. This implies
+    // we should let students create the project with the
+    // samplavigne.p5-vscode extension but drive functionality from using
+    // libraies that we create.
+    //
+    // On the other hand if we can get a feature/mode into the extension
+    // that actually packages the types with the project we can use this
+    // as a teaching repo that students can clone.
+    "/home/jnelso/.vscode/extensions/samplavigne.p5-vscode-1.2.4/p5types/global.d.ts"
+  ]
+}
