@@ -3,15 +3,36 @@ let minotaur1;
 
 function createMinotaur(spriteFolder){
   let sprite = createSprite(400, 150, 100, 100);
-  sprite.addAnimation('attacking', spriteFolder + '/attacking_000.png', spriteFolder + '/attacking_011.png')
-  sprite.addAnimation('dying', spriteFolder + '/dying_000.png', spriteFolder + '/dying_014.png')
-  sprite.addAnimation('hurt', spriteFolder + '/hurt_000.png', spriteFolder + '/hurt_011.png')
-  sprite.addAnimation('idle', spriteFolder + '/idle_000.png', spriteFolder + '/idle_011.png')
-  sprite.addAnimation('idle_blinking', spriteFolder + '/idle_blinking_000.png', spriteFolder + '/idle_blinking_011.png')
-  sprite.addAnimation('jump_start', spriteFolder + '/jump_start_000.png', spriteFolder + '/jump_start_005.png')
-  sprite.addAnimation('jump_loop', spriteFolder + '/jump_loop_000.png', spriteFolder + '/jump_loop_005.png')
-  sprite.addAnimation('taunt', spriteFolder + '/taunt_000.png', spriteFolder + '/taunt_017.png')
-  sprite.addAnimation('walking', spriteFolder + '/walking_000.png', spriteFolder + '/walking_017.png')
+
+  let actionFrameCount = new Map();
+  actionFrameCount.set('attacking', 11);
+  actionFrameCount.set('walking', 17); 
+  actionFrameCount.set('taunt', 17);
+  actionFrameCount.set('idle_blinking', 11);
+  actionFrameCount.set('jump_start', 5);
+  actionFrameCount.set('jump_loop', 5);
+
+  actionFrameCount.forEach((frameCount, actionName) => {
+    const firstFrameFileName = `${spriteFolder}/${actionName}_000.png`;
+    let finalFrameFileName;
+    if(frameCount <= 9){
+      finalFrameFileName = `${spriteFolder}/${actionName}_00${frameCount}.png`;
+    } else {
+      finalFrameFileName = `${spriteFolder}/${actionName}_0${frameCount}.png`;
+    }
+    let anim = sprite.addAnimation(actionName, firstFrameFileName, finalFrameFileName);
+
+    // After animation completes, reset the animation to the idle animation.
+    // This avoid having to check whether the control keys have been released
+    // on each draw() iterattion. This approach does seem to be more latent
+    // than just checking inside draw() however.
+    if(["attacking", "walking", "taunt", "jump_loop"].includes(actionName)){
+      anim.onComplete = function() {
+        sprite.changeAnimation('idle_blinking');
+        sprite.velocity.x = 0;
+     }
+    }
+  });
 
   return sprite;
 }
@@ -26,6 +47,20 @@ function setup() {
 
 function draw() {
   background(220);
-  minotaur1.changeAnimation('idle');
+  
+  if(keyDown('f')){ // Walking right
+    minotaur1.mirrorX(1)
+    minotaur1.changeAnimation('walking');
+    minotaur1.velocity.x = 10;
+  } else if(keyDown('s')){ // Walking left
+    minotaur1.mirrorX(-1)
+    minotaur1.changeAnimation('walking');
+    minotaur1.velocity.x = -10;
+  } else if(keyDown('e')){
+    minotaur1.changeAnimation('jump_start');
+    minotaur1.changeAnimation('jump_loop');
+  } else if(keyDown('c')){ // Attacking
+    minotaur1.changeAnimation('attacking');
+  }
   drawSprites();
 }
