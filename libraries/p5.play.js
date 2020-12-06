@@ -3434,13 +3434,28 @@ function Animation(pInst) {
       var digits2 = 0;
 
       //skip extension work backwards to find the numbers
+
+      // TODO: Don't assume paths do not have numeric characters in them.
+      // A string like 'assets/path01/img0000.png' breaks this parsing logic
+      // since the iteration continues to the begining of the string. A fix
+      // would be to only parse the filename portion of the path. For now,
+      // just stop at the last path separator (not portable). The parsing
+      // should use Node's path.parse() and only parse the file name component.
+      var pathSeparators = ['/', '\\'];
+
       for (i = from.length-5; i >= 0; i--) {
-        if(from.charAt(i) >= '0' && from.charAt(i) <= '9')
+        c = from.charAt(i);
+        if(pathSeparators.includes(c))
+          break;
+        if(c >= '0' && c <= '9')
           digits1++;
       }
 
-      for (i = to.length-5; i >= 0; i--) {
-        if(to.charAt(i) >= '0' && to.charAt(i) <= '9')
+      for (i = from.length-5; i >= 0; i--) {
+        c = from.charAt(i);
+        if(pathSeparators.includes(c))
+          break;
+        if(c >= '0' && c <= '9')
           digits2++;
       }
 
