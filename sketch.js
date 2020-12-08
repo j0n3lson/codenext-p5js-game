@@ -39,14 +39,15 @@ function createMinotaur(spriteFolder){
 
 function preload(){
   minotaur1 = createMinotaur('assets/sprites/sequences/minotaur_01');
+  backgroundImg = loadImage('assets/backgrounds/battleground4/pale/battleground4.png');
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(800, 800);
 }
 
 function draw() {
-  background(220);
+  background(backgroundImg);
   
   if(keyDown('f')){ // Walking right
     minotaur1.mirrorX(1)
