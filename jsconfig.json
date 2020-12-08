@@ -2,22 +2,6 @@
   "include": [
     "*.js",
     "libraries/*.js",
-    // TODO: Including this makes the IntelliSense features work. 
-    // By default, the p5types with the extension when a new p5 project is 
-    // created using the extension:
-    // 
-    // "$USER/.vscode/extensions/samplavigne.p5-vscode-1.2.4/p5types/global.d.ts"
-    // 
-    // This is probably done to support/control how type updates are deployed.
-    // However, the drawback is that the per-user type references makes the 
-    // newly generated project unusable for cloning. To get around this
-    // we manually copy the types into the repo.
-    //
-    // There might be an alternate way to get vscode to load the types based on
-    // the the documentation:
-    //
-    // https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition
-    
-    "types/p5/global.d.ts"
+    "node_modules/@types/p5/global.d.ts"
   ]
 }

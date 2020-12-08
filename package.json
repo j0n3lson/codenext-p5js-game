@@ -1,0 +1,22 @@
+{
+  "name": "codenext-p5js-game",
+  "version": "1.0.0",
+  "description": "A game written in p5.play",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j0n3lson/codenext-p5js-game.git"
+  },
+  "author": "Joseph Nelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j0n3lson/codenext-p5js-game/issues"
+  },
+  "homepage": "https://github.com/j0n3lson/codenext-p5js-game#readme",
+  "devDependencies": {
+    "@types/p5": "^0.9.1"
+  }
+}
