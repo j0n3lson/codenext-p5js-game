@@ -62,8 +62,7 @@ function draw() {
   } else if(keyDown('c')){ // Attacking
     minotaur1.changeAnimation('attacking');
   } else if(keyDown('t')){ // Taunting
-    minotaur1.changeAnimation('taunt')
-
+    minotaur1.changeAnimation('taunt');
   }
   drawSprites();
 }
