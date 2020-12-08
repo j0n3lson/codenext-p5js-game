@@ -1,6 +1,6 @@
 {
   "name": "codenext-p5js-game",
-  "version": "1.0.0",
+  "version": "0.2.1",
   "description": "A game written in p5.play",
   "main": "sketch.js",
   "scripts": {
