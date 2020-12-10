@@ -10,6 +10,7 @@ You need to setup you laptop and download the project before getting started.
 Follow these steps to get setup:
 
 1. Install your software (**BEFORE** class)
+    * [Create your Github account](http://www.github.com)
     * [Install Visual Studio Code](https://code.visualstudio.com/download)
     * [Install Git](https://sourceforge.net/projects/git-osx-installer/files/latest/download)
     * [Install NodeJs](https://nodejs.org/en/download/)
@@ -22,7 +23,10 @@ Follow these steps to get setup:
       folder containing the code. Install all recommended extensions:
 
      ![Installing recommended extensions](docs/img/install_extensions.gif)
+3. Practice Creating a VS Code Live Session
+   1. [Watch the Video](https://www.youtube.com/watch?v=A2ceblXTBBc&feature=youtu.be&t=82)
+   2. This feature helps us if you get stuck. The extensions you need are configured
+      in the project. You'll just need your Github account the first time you start session.
      
-
 If you are an instructor or TA wanting to make changes to the repo, follow the
 [Developer Guide](docs/developer_guide.md).
